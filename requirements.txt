@@ -3,5 +3,4 @@ uvicorn
 joblib
 pydantic
 numpy
-scikit-learn
 requests
