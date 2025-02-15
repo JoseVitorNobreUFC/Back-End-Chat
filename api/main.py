@@ -74,3 +74,12 @@ def debug_files():
         "current_directory": current_dir,
         "files_in_directory": files_in_dir
     }
+
+@app.get("/test-load")
+def test_load():
+    try:
+        model_test = joblib.load(MODEL_PATH)
+        vectorizer_test = joblib.load(VECTORIZER_PATH)
+        return {"message": "Modelo e vetorizador carregados com sucesso!"}
+    except Exception as e:
+        return {"error": str(e)}
