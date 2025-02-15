@@ -18,8 +18,8 @@ app.add_middleware(
 
 
 # Caminhos para o modelo e o vetorizador
-MODEL_PATH = "finalized_model.sav"
-VECTORIZER_PATH = "count_vectorizer.sav"  # Nome do vetorizador salvo
+MODEL_PATH = "api/finalized_model.sav"
+VECTORIZER_PATH = "api/count_vectorizer.sav"
 
 # Carregando o modelo e o vetorizador
 try:

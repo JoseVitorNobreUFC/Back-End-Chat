@@ -10,6 +10,5 @@
       "src": "/(.*)",
       "dest": "api/main.py"
     }
-  ],
-  "includeFiles": ["finalized_model.sav", "count_vectorizer.sav"]
+  ]
 }
