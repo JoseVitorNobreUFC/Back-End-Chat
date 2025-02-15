@@ -3,7 +3,7 @@ from pydantic import BaseModel
 import joblib
 import numpy as np
 from fastapi.middleware.cors import CORSMiddleware
-
+import os
 
 
 app = FastAPI()
@@ -56,3 +56,21 @@ def predict(data: PredictionRequest):
         return {"prediction": prediction.tolist()}
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Erro ao fazer a previsão: {e}")
+
+@app.get("/debug-files")
+def debug_files():
+    model_exists = os.path.exists(MODEL_PATH)
+    vectorizer_exists = os.path.exists(VECTORIZER_PATH)
+    
+    # Obtém o diretório atual para verificar onde está rodando
+    current_dir = os.getcwd()
+    files_in_dir = os.listdir(current_dir)
+
+    return {
+        "model_path": MODEL_PATH,
+        "vectorizer_path": VECTORIZER_PATH,
+        "model_exists": model_exists,
+        "vectorizer_exists": vectorizer_exists,
+        "current_directory": current_dir,
+        "files_in_directory": files_in_dir
+    }
